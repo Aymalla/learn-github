@@ -4,9 +4,9 @@ on:
   workflow_call:
   pull_request:
   merge_group:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   #   path:
   #     - '**.yml'
   #     - '**.yaml'
