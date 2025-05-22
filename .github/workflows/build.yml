@@ -1,0 +1,18 @@
+name: build
+on:
+  workflow_dispatch:
+  workflow_call: 
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+    job1:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Run Job 1
+          run: echo "Running Job 1"
