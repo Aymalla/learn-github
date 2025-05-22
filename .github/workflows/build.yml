@@ -3,7 +3,14 @@ on:
   workflow_dispatch:
   workflow_call:
   pull_request:
-  # push:
+  merge_group:
+  push:
+    branches:
+      - main
+    path:
+      - '**.yml'
+      - '**.yaml'
+
 
 concurrency:
   group: build
