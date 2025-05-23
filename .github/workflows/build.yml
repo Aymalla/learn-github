@@ -26,7 +26,12 @@ jobs:
           echo "🔧 Repository: ${{ github.repository }}"
           echo "🔎 Branch ref: ${{ github.ref }}"
           echo "🔎 Branch head_ref: ${{ github.head_ref }}"
-          echo "🔎 Commit SHA: ${{ github.sha }}, Commit ID: ${{ github.commit }}
+          echo "🔎 Branch base_ref: ${{ github.base_ref }}"
+          echo "🔎 Commit SHA: ${{ github.sha }}"
+          echo "🔎 Commit message: ${{ github.event.head_commit.message }}"
+          echo "🔎 Commit author: ${{ github.event.head_commit.author.name }}"
+          echo "🔎 Commit author email: ${{ github.event.head_commit.author.email }}"
+          echo "🔎 Commit Id: ${{ github.event.head_commit }}"
           echo "🎉 Triggering Event: ${{ github.event_name }}"
           echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
           echo "🔍 Running by: ${{ github.actor }}"
