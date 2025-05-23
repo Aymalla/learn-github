@@ -23,10 +23,20 @@ jobs:
       - run: |
           echo "🚀 This is a workflow for testing out GitHub Actions."
           echo "🔧 Repository: ${{ github.repository }}"
-          echo "🔎 Branch name: ${{ github.ref }} and your."
+          echo "🔎 Branch name: ${{ github.ref }}"
           echo "🎉 Triggering Event: ${{ github.event_name }}"
-          echo "🐧 Running on: ${{ runner.os }} !"
+          echo "🐧 Running on: ${{ runner.os }}, version: ${{ runner. }}"
           echo "🔍 Running by: ${{ github.actor }}"
+          echo "CPU Core: ${{runner.cpu-core }}"
+          echo "CPU Model: ${{ runner.cpu-model }}"
+          echo "Hostname: ${{ runner.hostname }}"
+          echo "Kernel release: ${{ runner.kernel-release }}"
+          echo "Kernel version: ${{ runner.kernel-version }}"
+          echo "Name: ${{ runner.name }}"
+          echo "Platform: ${{ runner.platform }}"
+          echo "Release: ${{ runner.release }}"
+          echo "Total memory bytes: ${{ runner.totalmem }}"
+
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: |
