@@ -1,5 +1,9 @@
 name: build
-run-name: ${{ github.actor }} is testing out build workflow
+run-name: Build triggered by ${{ github.actor }}
+description: |
+  This is a workflow for testing out GitHub Actions.
+  It will run on every push to the main branch and on pull requests.
+  It will also run on merge groups.
 on:
   workflow_dispatch:
   workflow_call:
