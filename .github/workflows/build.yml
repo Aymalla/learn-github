@@ -1,5 +1,5 @@
 name: build
-run-name: Build triggered by ${{ github.actor }}
+run-name: Build triggered by ${{ github.actor }}-${{ github.event_name }}-${{ github.ref }}
 description: |
   This is a workflow for testing out GitHub Actions.
   It will run on every push to the main branch and on pull requests.
