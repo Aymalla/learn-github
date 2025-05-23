@@ -25,6 +25,8 @@ jobs:
           echo "🚀 This is a workflow for testing out GitHub Actions."
           echo "🔧 Repository: ${{ github.repository }}"
           echo "🔎 Branch name: ${{ github.ref }}"
+          echo "🔎 Branch name: ${{ github.head_ref }}"
+          echo "🔎 Commit SHA: ${{ github.sha }}"
           echo "🎉 Triggering Event: ${{ github.event_name }}"
           echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
           echo "🔍 Running by: ${{ github.actor }}"
