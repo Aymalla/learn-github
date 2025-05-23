@@ -34,7 +34,7 @@ jobs:
           echo "📂 Work directory : ${{ github.workspace }}"
           echo "🔑 Actor: ${{ github.actor }}"
           echo "🔑 Repository ID: ${{ github.repository_id }}"
-          echo "🔑 Repository Name: ${{ github.repository_name }}"
+          echo "🔑 Repository Name: ${{ github.event.repository.name  }}"
           echo "🔑 Repository Full Name: ${{ github.repository }}"
           echo "🔑 Repository Owner: ${{ github.repository_owner }}, Owner Id: ${{ github.repository_owner_id }}
           echo "🔑 Repository URL: ${{ github.repositoryUrl }}"
