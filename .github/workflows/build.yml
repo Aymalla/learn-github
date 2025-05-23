@@ -12,13 +12,10 @@ on:
   push:
     branches:
       - main
-  #   path:
-  #     - '**.yml'
-  #     - '**.yaml'
 
 
 concurrency:
-  group: build
+  group: ${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -26,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "--------------------------------------------"
           echo "🚀 This is a workflow for testing out GitHub Actions."
           echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
