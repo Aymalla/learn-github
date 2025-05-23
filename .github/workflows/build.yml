@@ -1,0 +1,98 @@
+name: build
+run-name: Build triggered by ${{ github.actor }}
+description: |
+  This is a workflow for testing out GitHub Actions.
+  It will run on every push to the main branch and on pull requests.
+  It will also run on merge groups.
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+  merge_group:
+  push:
+    branches:
+      - main
+  #   path:
+  #     - '**.yml'
+  #     - '**.yaml'
+
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "--------------------------------------------"
+          echo "🚀 This is a workflow for testing out GitHub Actions."
+          echo "--------------------------------------------"
+          echo "🔑 Workflow Name: ${{ github.workflow }}"
+          echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
+          echo "🔑 workflow_sha: ${{ github.workflow_sha }}"
+          echo "--------------------------------------------"
+          echo "🔧 Repository: ${{ github.repository }}"
+          echo "🔎 Branch ref: ${{ github.ref }}"
+          echo "🔎 Branch head_ref: ${{ github.head_ref }}"
+          echo "🔎 Branch base_ref: ${{ github.base_ref }}"
+          echo "🔎 Commit SHA: ${{ github.sha }}"
+          echo "🎉 Triggering Event: ${{ github.event_name }}"
+          echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
+          echo "🔍 Running by: ${{ github.triggering_actor }}"
+          echo "📂 Work directory : ${{ github.workspace }}"
+          echo "🔑 Actor: ${{ github.actor }}"
+          echo "--------------------------------------------"
+          echo "🏃 runner ID: ${{ github.run_id }}"
+          echo "🏃‍♂️ Run Number: ${{ github.run_number }}"
+          echo "🏃‍♂️ Run Attempt: ${{ github.run_attempt }}"
+          echo "--------------------------------------------"
+          echo "🔑 Repository ID: ${{ github.repository_id }}"
+          echo "🔑 Repository Name: ${{ github.event.repository.name  }}"
+          echo "🔑 Repository Full Name: ${{ github.repository }}"
+          echo "🔑 Repository Owner: ${{ github.repository_owner }}, Owner Id: ${{ github.repository_owner_id }}"
+          echo "🔑 Repository URL: ${{ github.repositoryUrl }}"
+          echo "🔑 Repository Default Branch: ${{ github.event.repository.default_branch }}"
+          echo "🔑 Repository Created At: ${{ github.event.repository.created_at }}"
+          echo "🔑 Repository Pushed At: ${{ github.event.repository.pushed_at }}"
+          echo "🔑 Repository Size: ${{ github.event.repository.size }}"
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: | 
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Job 2
+        run: echo "Running Job-2"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: [job2]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Job 3
+        run: echo "Running Job 3"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Job 4
+        run: echo "Running Job 4"
+
