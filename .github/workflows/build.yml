@@ -6,7 +6,7 @@ on:
   pull_request:
   merge_group:
   push:
-    branches: [main]
+    branches: [ ${{ github.event.repository.default_branch }}]
   #   path:
   #     - '**.yml'
   #     - '**.yaml'
@@ -27,20 +27,14 @@ jobs:
           echo "🎉 Triggering Event: ${{ github.event_name }}"
           echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
           echo "🔍 Running by: ${{ github.actor }}"
-          echo "🔑 GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
-          echo "🔑 Repository Token: ${{ secrets.REPOSITORY_TOKEN }}"
-          echo "🔑 Personal Access Token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           echo "🔑 Repository ID: ${{ github.repository_id }}"
-          echo "🔑 Repository URL: ${{ github.repository_url }}"
           echo "🔑 Repository Name: ${{ github.event.repository.name }}"
-          echo "🔑 Repository Owner: ${{ github.event.repository.owner.login }}"
           echo "🔑 Repository Full Name: ${{ github.event.repository.full_name }}"
+          echo "🔑 Repository Owner: ${{ github.event.repository.owner.login }}"
           echo "🔑 Repository Default Branch: ${{ github.event.repository.default_branch }}"
           echo "🔑 Repository Created At: ${{ github.event.repository.created_at }}"
-          echo "🔑 Repository Updated At: ${{ github.event.repository.updated_at }}"
           echo "🔑 Repository Pushed At: ${{ github.event.repository.pushed_at }}"
           echo "🔑 Repository Size: ${{ github.event.repository.size }}"
-          echo "🔑 Repository Language: ${{ github.event.repository.language }}"
 
       - name: Check out repository code
         uses: actions/checkout@v4
