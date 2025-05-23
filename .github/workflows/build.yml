@@ -4,10 +4,8 @@ on:
   workflow_dispatch:
   workflow_call:
   pull_request:
-    branches: [$default-branch]
   merge_group:
   push:
-    branches: [$default-branch]
   #   path:
   #     - '**.yml'
   #     - '**.yaml'
