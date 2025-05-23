@@ -25,7 +25,7 @@ jobs:
           echo "🔧 Repository: ${{ github.repository }}"
           echo "🔎 Branch name: ${{ github.ref }}"
           echo "🎉 Triggering Event: ${{ github.event_name }}"
-          echo "🐧 Running on: ${{ runner.os }}, version: ${{ runner. }}"
+          echo "🐧 Running on: ${{ runner.os }}"
           echo "🔍 Running by: ${{ github.actor }}"
           echo "CPU Core: ${{runner.cpu-core }}"
           echo "CPU Model: ${{ runner.cpu-model }}"
