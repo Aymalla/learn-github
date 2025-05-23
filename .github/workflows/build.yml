@@ -3,7 +3,7 @@ run-name: Build triggered by ${{ github.actor }}-${{ github.event_name }}-${{ gi
 description: |
   This is a workflow for testing out GitHub Actions.
   It will run on every push to the main branch and on pull requests.
-  It will also run on merge groups (queues)
+  It will also run on merge groups
 on:
   workflow_dispatch:
   workflow_call:
@@ -24,6 +24,7 @@ jobs:
     steps:
       - run: |
           echo "🚀 This is a workflow for testing out GitHub Actions."
+          echo "Workflow version: Pull Request-1"
           echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
           echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
