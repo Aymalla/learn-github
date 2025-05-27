@@ -32,7 +32,6 @@ jobs:
         uses: actions/checkout@v4
       - name: 🚀 Displaying GitHub Context Variables.
         uses: ./.github/actions/github-context@v1
-        shell: bash
         with:
           message: "🔑 Displaying GitHub Context Variables"
 
