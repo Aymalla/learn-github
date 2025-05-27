@@ -32,12 +32,12 @@ jobs:
     steps:
       - name: "Check out repository code (Workflow version: Pull Request-1)"
         uses: actions/checkout@v4
-      - name: 🚀 Displaying GitHub Context Variables.
+      - name: "🚀 Displaying GitHub Context Variables."
         id: get_context
         uses: ./.github/actions/github-context
         with:
           message: "🔑 Displaying GitHub Context Variables"
-      - name: Display Context Message
+      - name: "Display Context Message"
         run: |
           echo "🔑 The message from the previous step is: ${{ steps.get_context.outputs.message }}"
 
