@@ -52,15 +52,14 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Restore Dependencies
+      - name: 🔨 Build Application
         working-directory: ${{ github.workspace }}/src/web-app
         run: |
+         
           echo "🔄 Restoring dependencies for the .NET project."
           dotnet restore
-
-      - name: 🏛️ Build Application
-        working-directory: ${{ github.workspace }}/src/web-app
-        run: dotnet build --no-restore --configuration Release
+          echo "🔨 Building the .NET project."
+          dotnet build --no-restore --configuration Release
 
       - name: 📢 Publish Application
         working-directory: ${{ github.workspace }}/src/web-app
