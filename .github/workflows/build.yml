@@ -56,7 +56,7 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Cache NuGet
+      - name: 🫙Cache NuGet
         uses: actions/cache@v3
         with:
           path: ~/.nuget/packages
