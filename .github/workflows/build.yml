@@ -82,7 +82,7 @@ jobs:
           retention-days: 5
 
 
-  test:
+  release:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -97,15 +97,7 @@ jobs:
           name: build-artifacts
           path: ./publish
 
-      
-
-  release:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run Release
-        run: echo "Running Release"
-
+      - name: 📦 Check artifact
+        run: |
+          echo "📦 Checking the downloaded artifacts."
+          ls -la ./publish
