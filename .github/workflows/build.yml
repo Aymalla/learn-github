@@ -22,9 +22,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "🚀 This is a workflow for testing out GitHub Actions."
-          echo "Workflow version: Pull Request-1"
+
+      - name: 🚀 This is a workflow for testing out GitHub Actions. (Workflow version: Pull Request-1)
+        run: |
           echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
           echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
