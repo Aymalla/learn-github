@@ -1,0 +1,38 @@
+name: release
+run-name: Release triggered by ${{ github.actor }}_${{ github.event_name }}_${{ github.ref }}
+description: Release workflow for testing GitHub Actions.
+  
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: 🚀 Displaying GitHub Context Variables.
+        id: get_context
+        uses: ./.github/actions/github-context
+        with:
+          message: "🔑 Displaying GitHub Context Variables"
+      - name: Display Context Message
+        run: |
+          echo "🔑 The message from the previous step is: ${{ steps.get_context.outputs.message }}"
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: | 
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
