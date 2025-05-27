@@ -73,7 +73,7 @@ jobs:
       - name: 🔍 Run Tests
         working-directory: ${{ github.workspace }}/src/web-app
         run: |
-          echo "🔍 Running tests on the downloaded artifacts."
+          echo "🔍 Running tests"
           dotnet test --no-build --verbosity normal
 
       - name: 📢 Publish Application
