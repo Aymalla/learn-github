@@ -57,7 +57,8 @@ jobs:
           echo "🔄 Restoring dependencies for the .NET project."
           echo "📂 Current directory: ${{ github.workspace }}"
           echo "📦 Running dotnet restore..."
-          cd ${{ github.workspace }}/src
+          cd ${{ github.workspace }}/src/web-app
+          echo "📂 Current directory after change: $(pwd)"
           dotnet restore
 
       - name: 🏛️ Build Application
