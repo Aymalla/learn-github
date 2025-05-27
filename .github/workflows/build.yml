@@ -67,6 +67,7 @@ jobs:
 
       - name: ⬆️Upload Build Artifacts
         uses: actions/upload-artifact@v4
+        working-directory: ${{ github.workspace }}/src/web-app
         with:
           name: build-artifacts
           path: ./publish
