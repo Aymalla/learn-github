@@ -1,5 +1,5 @@
 name: build
-run-name: Build triggered by ${{ github.actor }}-${{ github.event_name }}-${{ github.ref }}
+run-name: Build triggered by ${{ github.actor }}_${{ github.event_name }}_${{ github.ref }}
 description: |
   This is a workflow for testing out GitHub Actions.
   It will run on every push to the main branch and on pull requests.
@@ -22,19 +22,20 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "🚀 This is a workflow for testing out GitHub Actions."
+
+      - name: 🚀 This is a workflow for testing out GitHub Actions.
+        run: |
           echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
           echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
           echo "🔑 workflow_sha: ${{ github.workflow_sha }}"
           echo "--------------------------------------------"
           echo "🔧 Repository: ${{ github.repository }}"
-          echo "🔎 Branch ref: ${{ github.ref }}"
-          echo "🔎 Branch head_ref: ${{ github.head_ref }}"
-          echo "🔎 Branch base_ref: ${{ github.base_ref }}"
-          echo "🔎 Commit SHA: ${{ github.sha }}"
-          echo "🎉 Triggering Event: ${{ github.event_name }}"
+          echo "🌿 Branch ref: ${{ github.ref }}"
+          echo "🌿 Branch head_ref: ${{ github.head_ref }}"
+          echo "🌿 Branch base_ref: ${{ github.base_ref }}"
+          echo "🌿 Commit SHA: ${{ github.sha }}"
+          echo "☄️ Triggering Event: ${{ github.event_name }}"
           echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
           echo "🔍 Running by: ${{ github.triggering_actor }}"
           echo "📂 Work directory : ${{ github.workspace }}"
