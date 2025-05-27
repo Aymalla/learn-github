@@ -1,0 +1,57 @@
+name: "Display GitHub Context Variables"
+description: "This action displays various GitHub context variables for debugging and information purposes."
+
+inputs:
+  message:
+    description: "A message to display in the workflow logs."
+    required: false
+    default: "This is a test message for the GitHub context action."
+outputs:
+  message:
+    description: "The message that was displayed in the workflow logs."
+    value: ${{ steps.set_output.outputs.message }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Display GitHub Context Variables
+      run: |
+        echo "${{ inputs.message }}"
+        echo "🔑 Workflow Name: ${{ github.workflow }}"
+        echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
+        echo "🔑 workflow_sha: ${{ github.workflow_sha }}"
+        echo "--------------------------------------------"
+        echo "🔧 Repository: ${{ github.repository }}"
+        echo "🌿 Branch ref: ${{ github.ref }}"
+        echo "🌿 Branch head_ref: ${{ github.head_ref }}"
+        echo "🌿 Branch base_ref: ${{ github.base_ref }}"
+        echo "🌿 Commit SHA: ${{ github.sha }}"
+        echo "☄️ Triggering Event: ${{ github.event_name }}"
+        echo "🐧 Running on: ${{ runner.os }}, host Name:  ${{ runner.name }}"
+        echo "🔍 Running by: ${{ github.triggering_actor }}"
+        echo "📂 Work directory : ${{ github.workspace }}"
+        echo "🔑 Actor: ${{ github.actor }}"
+        echo "--------------------------------------------"
+        echo "🏃 runner ID: ${{ github.run_id }}"
+        echo "🏃‍♂️ Run Number: ${{ github.run_number }}"
+        echo "🏃‍♂️ Run Attempt: ${{ github.run_attempt }}"
+        echo "--------------------------------------------"
+        echo "🔑 Repository ID: ${{ github.repository_id }}"
+        echo "🔑 Repository Name: ${{ github.event.repository.name  }}"
+        echo "🔑 Repository Full Name: ${{ github.repository }}"
+        echo "🔑 Repository Owner: ${{ github.repository_owner }}, Owner Id: ${{ github.repository_owner_id }}"
+        echo "🔑 Repository URL: ${{ github.repositoryUrl }}"
+        echo "🔑 Repository Default Branch: ${{ github.event.repository.default_branch }}"
+        echo "🔑 Repository Created At: ${{ github.event.repository.created_at }}"
+        echo "🔑 Repository Pushed At: ${{ github.event.repository.pushed_at }}"
+        echo "🔑 Repository Size: ${{ github.event.repository.size }}"
+
+    - name: Set Output Message
+      id: set_output
+      run: echo "message=${{ inputs.message }}" >> $GITHUB_OUTPUT
+
+    - name: Output Message
+      run: echo "The output message is: ${{ steps.set_output.outputs.message }}"
+      shell: bash
+      env:
+        GITHUB_OUTPUT: $GITHUB_OUTPUT
