@@ -15,6 +15,7 @@ runs:
   using: "composite"
   steps:
     - name: Display GitHub Context Variables
+      shell: bash
       run: |
         echo "${{ inputs.message }}"
         echo "🔑 Workflow Name: ${{ github.workflow }}"
