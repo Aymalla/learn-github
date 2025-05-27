@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  setup:
+  prerequisites:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -37,7 +37,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [setup]
+    needs: [prerequisites]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -47,10 +47,16 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-      - name: Setup .NET
+      - name: 🔧 Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
+
+      - name: Cache NuGet
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/web-app/*.csproj') }}
 
       - name: 🔄 Restore dependencies
         working-directory: ${{ github.workspace }}/src/web-app
@@ -74,7 +80,7 @@ jobs:
         working-directory: ${{ github.workspace }}/src/web-app
         run: dotnet publish --no-build --configuration Release --output ./publish
 
-      - name: ⬆️Upload Build Artifacts
+      - name: ⬆️ Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
@@ -84,9 +90,9 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [prerequisites]
     steps:
-      - name: Setup .NET
+      - name: 🔧 Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
