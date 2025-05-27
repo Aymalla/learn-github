@@ -70,6 +70,7 @@ jobs:
         with:
           name: build-artifacts
           path: ./publish
+          retention-days: 5
 
 
   test:
