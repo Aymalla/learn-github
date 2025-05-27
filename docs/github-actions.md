@@ -49,3 +49,23 @@ Contexts are a way to access information about the workflow run, the event that 
 - `inputs`: Contains input parameters that are passed to the workflow or action.
 - `steps`: Contains information about the steps that have been executed in the current job, including their status and outputs.
 - `matrix`: Contains information about the matrix configuration used in the workflow.
+
+### Triggering Workflows
+
+Workflows can be triggered by [various events](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow), such as:
+
+- **push**: Triggered when code is pushed to a branch.
+- **pull_request**: Triggered when a pull request is opened, closed, or synchronized.
+- **workflow_dispatch**: Allows you to manually trigger a workflow from the GitHub UI.
+- **schedule**: Allows you to run a workflow on a schedule using cron syntax.
+- **repository_dispatch**: Allows you to trigger a workflow from an external event, such as a webhook.
+- **workflow_run**: Allows you to trigger a workflow based on the completion of another workflow.
+- **merge_group**: Allows you to trigger a workflow when a merge group is created or updated.
+- **fork**: Triggered when a repository is forked.
+- **release**: Triggered when a release is created, published, or deleted.
+- **issues**: Triggered when an issue is opened, edited, closed, or reopened
+- **label**: Triggered when a label is added, edited, or deleted.
+- **milestone**: Triggered when a milestone is created, edited, or closed.
+- **project**: Triggered when a project is created, edited, or deleted.
+- **project_card**: Triggered when a project card is created, edited, or deleted.
+- **project_column**: Triggered when a project column is created, edited, or deleted.

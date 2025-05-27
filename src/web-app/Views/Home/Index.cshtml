@@ -1,0 +1,39 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="/css/site.css">
+
+<div class="home-container">
+    <p>Manage your library efficiently with our system. You can:</p>
+    <ul>
+        <li><a href="/Books">View and manage books</a></li>
+        <li><a href="/Books/Create">Add new books</a></li>
+    </ul>
+</div>
+
+<style>
+    .home-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .home-container ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .home-container li {
+        margin: 10px 0;
+    }
+    .home-container a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .home-container a:hover {
+        text-decoration: underline;
+    }
+</style>
