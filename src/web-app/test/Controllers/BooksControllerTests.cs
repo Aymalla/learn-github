@@ -1,12 +1,13 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using LibraryManagementWebApp.Controllers;
 using LibraryManagementWebApp.Models;
-using System.Collections.Generic;
-using Xunit;
+using Microsoft.Extensions.Logging;
 
-namespace LibraryManagementWebApp.Tests
+namespace LibraryManagementWebApp.Tests.Controllers
 {
+    [TestClass]
     public class BooksControllerTests
     {
         private readonly BooksController _controller;
@@ -18,18 +19,20 @@ namespace LibraryManagementWebApp.Tests
             _controller = new BooksController(_logger);
         }
 
-        [Fact]
+        [TestMethod]
         public void Index_ReturnsViewResult_WithListOfBooks()
         {
             // Act
             var result = _controller.Index();
 
             // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.IsAssignableFrom<List<Book>>(viewResult.Model);
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            var viewResult = result as ViewResult;
+            Assert.IsNotNull(viewResult);
+            Assert.IsInstanceOfType(viewResult.Model, typeof(List<Book>));
         }
 
-        [Fact]
+        [TestMethod]
         public void Create_ValidBook_RedirectsToIndex()
         {
             // Arrange
@@ -39,11 +42,13 @@ namespace LibraryManagementWebApp.Tests
             var result = _controller.Create(book);
 
             // Assert
-            var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Equal("Index", redirectToActionResult.ActionName);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            var redirectToActionResult = result as RedirectToActionResult;
+            Assert.IsNotNull(redirectToActionResult);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-        [Fact]
+        [TestMethod]
         public void Delete_ValidId_RedirectsToIndex()
         {
             // Arrange
@@ -54,19 +59,23 @@ namespace LibraryManagementWebApp.Tests
             var result = _controller.Delete(1);
 
             // Assert
-            var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Equal("Index", redirectToActionResult.ActionName);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            var redirectToActionResult = result as RedirectToActionResult;
+            Assert.IsNotNull(redirectToActionResult);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
 
-        [Fact]
+        [TestMethod]
         public void Delete_InvalidId_RedirectsToIndex()
         {
             // Act
             var result = _controller.Delete(999);
 
             // Assert
-            var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Equal("Index", redirectToActionResult.ActionName);
+            Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+            var redirectToActionResult = result as RedirectToActionResult;
+            Assert.IsNotNull(redirectToActionResult);
+            Assert.AreEqual("Index", redirectToActionResult.ActionName);
         }
     }
 }
