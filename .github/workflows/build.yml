@@ -27,7 +27,6 @@ jobs:
 
       - name: "🚀 This is a workflow for testing out GitHub Actions. (Workflow version: Pull Request-1)"
         run: |
-          echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
           echo "🔑 workflow_ref: ${{ github.workflow_ref }}"
           echo "🔑 workflow_sha: ${{ github.workflow_sha }}"
