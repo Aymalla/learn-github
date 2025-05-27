@@ -52,11 +52,11 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Cache NuGet
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/web-app/*.csproj') }}
+      # - name: Cache NuGet
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.nuget/packages
+      #     key: ${{ runner.os }}-nuget-${{ hashFiles('**/web-app/*.csproj') }}
 
       - name: 🔄 Restore dependencies
         working-directory: ${{ github.workspace }}/src/web-app
