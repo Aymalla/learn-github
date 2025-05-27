@@ -8,6 +8,8 @@ on:
   workflow_dispatch:
   workflow_call:
   pull_request:
+    branches:
+      - main
   merge_group:
   push:
     branches:
@@ -28,14 +30,14 @@ jobs:
   prerequisites:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: "Check out repository code (Workflow version: Main)"
         uses: actions/checkout@v4
-      - name: 🚀 Displaying GitHub Context Variables.
+      - name: "🚀 Displaying GitHub Context Variables."
         id: get_context
         uses: ./.github/actions/github-context
         with:
           message: "🔑 Displaying GitHub Context Variables"
-      - name: Display Context Message
+      - name: "Display Context Message"
         run: |
           echo "🔑 The message from the previous step is: ${{ steps.get_context.outputs.message }}"
 
