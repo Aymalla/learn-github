@@ -8,6 +8,8 @@ on:
   workflow_dispatch:
   workflow_call:
   pull_request:
+    branches:
+      - main
   merge_group:
   push:
     branches:
@@ -23,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: 🚀 This is a workflow for testing out GitHub Actions. (Workflow version: Pull Request-1)
+      - name: "🚀 This is a workflow for testing out GitHub Actions. (Workflow version: Pull Request-1)"
         run: |
           echo "--------------------------------------------"
           echo "🔑 Workflow Name: ${{ github.workflow }}"
