@@ -30,7 +30,7 @@ jobs:
   prerequisites:
     runs-on: ubuntu-latest
     steps:
-      - name: "Check out repository code (Workflow version: Pull Request-2)"
+      - name: "Check out repository code (Workflow version: Pull Request-2 )"
         uses: actions/checkout@v4
       - name: 🚀 Displaying GitHub Context Variables.
         id: get_context
