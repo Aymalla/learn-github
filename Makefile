@@ -41,7 +41,7 @@ py-clean-cache: ## 🧹 Clean python cache
 
 run: ## 🚀 Start the application
 	@echo "🚀 Starting the application..."
-	@uv run main.py
+	@uv run src/main.py
 
 
 	
