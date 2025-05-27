@@ -47,8 +47,8 @@ runs:
         echo "🔑 Repository Pushed At: ${{ github.event.repository.pushed_at }}"
         echo "🔑 Repository Size: ${{ github.event.repository.size }}"
 
-    - name: Set Output Message
-      id: set_output
+    - id: set_output
+      name: Set Output Message
       shell: bash
       run: echo "message=${{ inputs.message }}" >> $GITHUB_OUTPUT
 
