@@ -49,9 +49,11 @@ runs:
 
     - name: Set Output Message
       id: set_output
+      shell: bash
       run: echo "message=${{ inputs.message }}" >> $GITHUB_OUTPUT
 
     - name: Output Message
+      shell: bash
       run: echo "The output message is: ${{ steps.set_output.outputs.message }}"
       env:
         GITHUB_OUTPUT: $GITHUB_OUTPUT
