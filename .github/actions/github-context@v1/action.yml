@@ -53,6 +53,5 @@ runs:
 
     - name: Output Message
       run: echo "The output message is: ${{ steps.set_output.outputs.message }}"
-      shell: bash
       env:
         GITHUB_OUTPUT: $GITHUB_OUTPUT
