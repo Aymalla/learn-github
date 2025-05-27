@@ -52,14 +52,23 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: 🔄 Restore dependencies
+        working-directory: ${{ github.workspace }}/src/web-app
+        run: |
+          echo "🔄 Restoring dependencies for the .NET project."
+          dotnet restore
+
       - name: 🔨 Build Application
         working-directory: ${{ github.workspace }}/src/web-app
         run: |
-         
-          echo "🔄 Restoring dependencies for the .NET project."
-          dotnet restore
           echo "🔨 Building the .NET project."
           dotnet build --no-restore --configuration Release
+
+      - name: 🔍 Run Tests
+        working-directory: ${{ github.workspace }}/src/web-app
+        run: |
+          echo "🔍 Running tests on the downloaded artifacts."
+          dotnet test --no-build --verbosity normal
 
       - name: 📢 Publish Application
         working-directory: ${{ github.workspace }}/src/web-app
@@ -88,12 +97,7 @@ jobs:
           name: build-artifacts
           path: ./publish
 
-      - name: Run Tests
-        run: |
-          echo "🔍 Running tests on the downloaded artifacts."
-          echo "📂 Current directory: ${{ github.workspace }}/publish"
-          cd ./publish
-          dotnet test --no-build --verbosity normal
+      
 
   release:
     runs-on: ubuntu-latest
