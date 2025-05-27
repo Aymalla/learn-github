@@ -34,6 +34,12 @@ jobs:
         with:
           message: "🔑 Displaying GitHub Context Variables"
 
+      
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: | 
@@ -42,33 +48,60 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  job2:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore Dependencies
+        run: |
+          echo "🔄 Restoring dependencies for the .NET project."
+          echo "📂 Current directory: ${{ github.workspace }}"
+          echo "📦 Running dotnet restore..."
+          dotnet restore
+
+      - name: 🏛️ Build Application
+        run: dotnet build --no-restore --configuration Release
+
+      - name: 📢 Publish Application
+        run: dotnet publish --no-build --configuration Release --output ./publish
+
+      - name: ⬆️Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./publish
+
+
+  test:
     runs-on: ubuntu-latest
-    needs: [job1]
+    needs: [build]
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: ⏬ Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./publish
+
+      - name: Run Tests
+        run: |
+          echo "🔍 Running tests on the downloaded artifacts."
+          echo "📂 Current directory: ${{ github.workspace }}/publish"
+          cd ./publish
+          dotnet test --no-build --verbosity normal
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Job 2
-        run: echo "Running Job-2"
-
-  job3:
-    runs-on: ubuntu-latest
-    needs: [job2]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run Job 3
-        run: echo "Running Job 3"
-
-  job4:
-    runs-on: ubuntu-latest
-    needs: [job1]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run Job 4
-        run: echo "Running Job 4"
+      - name: Run Release
+        run: echo "Running Release"
 
