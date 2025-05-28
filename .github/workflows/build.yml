@@ -141,6 +141,13 @@ jobs:
           blob-name: "web-app-build-artifact.zip"
           download-path: "."
 
+      # - uses: hyperskill/azblob-download-artifact@v1.0.1
+      #   with:
+      #     connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      #     container-name: "artifacts"
+      #     name: "web-app-build-artifact.zip"
+      #     path: "."
+
       - name: 📦 Unzip Artifact
         run: |
           echo "📦 Unzipping the downloaded artifact."
