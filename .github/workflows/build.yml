@@ -96,10 +96,8 @@ jobs:
 
       - name: 📦 Upload to Azure Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@main
-        env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         with:
-          connection_string: ${{ env.AZURE_STORAGE_CONNECTION_STRING }}
+          connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           source_dir: ${{ github.workspace }}/src/web-app/publish
           container_name: artifacts
           
