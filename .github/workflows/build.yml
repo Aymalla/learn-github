@@ -94,11 +94,17 @@ jobs:
           path: ${{ github.workspace }}/src/web-app/publish
           retention-days: 5
 
+      - name: Zip Folder
+        run: |
+          cd ../ # I added this
+          rm -rf build-artifacts
+          zip -r ${{ hashFiles("${{ github.workspace }}/src/web-app/publish") }}.zip ${{ github.workspace }}/src/web-app/publish
+
       - name: 📦 Upload to Azure Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@main
         with:
           connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          source_dir: ${{ github.workspace }}/src/web-app/publish
+          source_dir: hashFiles("${{ github.workspace }}/src/web-app/publish").zip
           container_name: artifacts
           
           # extra_args: '--pattern *.tar.gz'
