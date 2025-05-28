@@ -106,7 +106,6 @@ jobs:
           connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           source_dir: ${{ github.workspace }}/src/web-app/publish
           container_name: artifacts
-          
           extra_args: '--pattern *.zip'
           # WARNING: this will overwrite existing blobs in your blob storage
           overwrite: 'true'
@@ -134,12 +133,12 @@ jobs:
           ls -la ./publish
 
       - name: ⏬ Download Blob from Azure Storage
-        uses: armanrahman22/azblob-download-action
+        uses: bacongobbler/azure-blob-storage-download@main
         with:
           connection-string:  ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          container-name: "artifacts"
-          blob-name: "web-app-build-artifact.zip"
-          download-path: "."
+          container_name: "artifacts"
+          blob_name: "web-app-build-artifact.zip"
+          download_path: "."
 
       # - uses: hyperskill/azblob-download-artifact@v1.0.1
       #   with:
