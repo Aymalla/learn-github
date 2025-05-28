@@ -97,8 +97,8 @@ jobs:
       - name: 🗜️ Zip Folder
         run: |
           cd ../ # I added this
-          rm -rf build-artifacts
-          zip -r ${{ github.workspace }}/src/web-app/publish/${{ hashFiles(format('{0}/src/web-app/publish/**', github.workspace)) }}.zip ${{ github.workspace }}/src/web-app/publish
+          rm -rf web-app-build-artifact.zip
+          zip -r web-app-build-artifact.zip ${{ github.workspace }}/src/web-app/publish
 
       - name: 📦 Upload to Azure Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@main
@@ -132,3 +132,22 @@ jobs:
         run: |
           echo "📦 Checking the downloaded artifacts."
           ls -la ./publish
+
+      - name: ⏬ Download Blob from Azure Storage
+        uses: armanrahman22/azblob-download-action
+        with:
+          connection-string:  ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          container-name: "artifacts"
+          blob-name: "web-app-build-artifact.zip"
+          download-path: "."
+
+      - name: 📦 Unzip Artifact
+        run: |
+          echo "📦 Unzipping the downloaded artifact."
+          unzip -o web-app-build-artifact.zip -d ./web-app-publish
+
+      - name: 📦 Check Unzipped Artifact
+        run: |
+          echo "📦 Checking the contents of the unzipped artifact."
+          ls -la ./web-app-publish
+
