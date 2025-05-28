@@ -93,6 +93,16 @@ jobs:
           path: ${{ github.workspace }}/src/web-app/publish
           retention-days: 5
 
+      - name: 📦 Upload to Azure Blob Storage
+        uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: ${{ github.workspace }}/src/web-app/publish
+          container_name: artifacts
+          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          # extra_args: '--pattern *.tar.gz'
+          # WARNING: this will overwrite existing blobs in your blob storage
+          overwrite: 'true'
+
 
   release:
     runs-on: ubuntu-latest
