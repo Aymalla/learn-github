@@ -5,7 +5,7 @@ namespace LibraryManagementWebApp.Models
 {
     public class Book
     {
-        public String Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(100)]
