@@ -45,7 +45,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [prerequisites]
+    needs: [setup]
     environment: DEV
     steps:
       - name: Check out repository code
