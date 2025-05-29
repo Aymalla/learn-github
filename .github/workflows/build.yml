@@ -45,6 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prerequisites]
     environment: DEV
+    env:
+      artifact_name: 'web-app-build-artifact'
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -90,15 +92,15 @@ jobs:
       - name: ⬆️ Upload Build Artifacts - GitHub
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
+          name: ${{ env.artifact_name }}
           path: ./src/web-app/publish
           retention-days: 5
 
       - name: 🗜️ Zip Folder
         run: |
           # name of the zip file can be replaced with hash of the commit to support versioning
-          rm -rf web-app-build-artifact.zip 
-          zip -r web-app-build-artifact.zip ${{ github.workspace }}/src/web-app/publish
+          rm -rf ${{ env.artifact_name }}.zip
+          zip -r ${{ env.artifact_name }}.zip ${{ github.workspace }}/src/web-app/publish
 
       - name: 📦 Upload Build Artifact - Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@main
@@ -113,39 +115,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: [build]
-    steps:
-    
-      - name: 🔧 Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-
-      - name: ⏬ Download Build Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-          path: ./publish
-
-      - name: 📦 Check artifact
-        run: |
-          echo "📦 Checking the downloaded artifacts."
-          ls -la ./publish
-
-      - name: ⏬ Download Blob from Azure Storage
-        uses: armanrahman22/azblob-download-action@v0.0.4
-        with:
-          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          container-name: "artifacts"
-          blob-name: "web-app-build-artifact.zip"
-          download-path: "."
-
-      - name: 📦 Unzip Artifact
-        run: |
-          echo "📦 Unzipping the downloaded artifact."
-          unzip -o web-app-build-artifact.zip -d ./web-app-publish
-
-      - name: 📦 Check Unzipped Artifact
-        run: |
-          echo "📦 Checking the contents of the unzipped artifact."
-          ls -la ./web-app-publish
-
+    uses: ./.github/workflows/release.yml
+    with:
+      artifact_name: '${{ env.artifact_name }}.zip'
