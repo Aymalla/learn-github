@@ -37,7 +37,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-      - name: ⏬ Download Build Artifacts
+      - name: ⏬ Download Build Artifacts - GitHub
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact_name }}
@@ -56,12 +56,12 @@ jobs:
           blob-name: "${{ inputs.artifact_name }}.zip"
           download-path: "."
 
-      - name: 📦 Unzip Artifact
+      - name: 📦 Unzip Artifact - Azure
         run: |
           echo "📦 Unzipping the downloaded artifact."
           unzip -o ${{ inputs.artifact_name }}.zip -d ./web-app-publish
 
-      - name: 📦 Check Unzipped Artifact
+      - name: 📦 Check Unzipped Artifact - Azure
         run: |
           echo "📦 Checking the contents of the unzipped artifact."
           ls -la ./web-app-publish

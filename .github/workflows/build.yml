@@ -99,8 +99,9 @@ jobs:
       - name: 🗜️ Zip Folder
         run: |
           # name of the zip file can be replaced with hash of the commit to support versioning
+          cd ${{ github.workspace }}/src/web-app
           rm -rf ${{ env.artifact_name }}.zip
-          zip -r ${{ env.artifact_name }}.zip ${{ github.workspace }}/src/web-app/publish
+          zip -r ${{ env.artifact_name }}.zip publish/**
 
       - name: 📦 Upload Build Artifact - Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@main
