@@ -89,10 +89,10 @@ jobs:
 
       - name: 📦 Upload build Artifacts
         uses: ./.github/workflows/upload-artifact.yml
-        secrets: inherit
         with:
           artifact_name: web-app-build-artifacts
           path: ${{ github.workspace }}/src/web-app/publish
+        secrets: inherit
 
 
 
