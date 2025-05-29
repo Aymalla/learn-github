@@ -14,7 +14,7 @@ Explore the workflow features of GitHub Actions to automate the build and releas
 Explore how the workflows is managed in the `.github/workflows` directory and triggered to explore how the workflows behave in different scenarios:
 
 - [x] Which versions of the workflows are triggered on different events.
-- [x] Trigging events for the workflows.
+- [x] Triggering events for the workflows.
 - [x] Conditional execution of the workflows based on the event type.
 - [x] Access secrets and environment variables in the workflows.
 - [x] Use of reusable action.

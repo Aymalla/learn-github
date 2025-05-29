@@ -104,7 +104,7 @@ jobs:
         uses: bacongobbler/azure-blob-storage-upload@main
         with:
           connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          source_dir: ${{ github.workspace }}/src/web-app/publish
+          source_dir: '.'
           container_name: artifacts
           extra_args: '--pattern *.zip'
           # WARNING: this will overwrite existing blobs in your blob storage
