@@ -111,10 +111,10 @@ jobs:
           extra_args: '--pattern *.zip'
           overwrite: 'true'
 
-
   release:
-    runs-on: ubuntu-latest
+    name: Release Job
     needs: [build]
     uses: ./.github/workflows/release.yml
     with:
       artifact_name: '${{ env.artifact_name }}'
+    secrets: inherit
