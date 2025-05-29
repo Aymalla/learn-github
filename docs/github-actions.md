@@ -70,6 +70,16 @@ Workflows can be triggered by [various events](https://docs.github.com/en/action
 - **project_card**: Triggered when a project card is created, edited, or deleted.
 - **project_column**: Triggered when a project column is created, edited, or deleted.
 
+### Workflow Scenarios
+
+We will explore various scenarios to understand how workflows behave in different situations:
+
+- Trigger workflows from main branch
+- Trigger workflows from pull requests
+- Trigger workflows from release branch
+- Trigger workflows from manual dispatch
+- Trigger workflows from old commit SHA
+
 ## Artifacts
 
 Artifacts are files or sets of files produced by a workflow run. They can be used to store build outputs, test results, or any other files generated during the workflow run. Artifacts can be uploaded and downloaded using the `actions/upload-artifact` and `actions/download-artifact` actions.
