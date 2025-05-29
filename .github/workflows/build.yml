@@ -15,6 +15,7 @@ on:
       - main
       - dev
       - feature/*
+      - release/*
     paths:
       - 'src/**'
       - '!docs/**'
@@ -114,6 +115,7 @@ jobs:
   release:
     name: release
     needs: [build]
+    if: ${{ !failure() && !cancelled() }}
     uses: ./.github/workflows/release.yml
     with:
       artifact_name: 'web-app-build-artifact'
