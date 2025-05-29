@@ -1,4 +1,4 @@
-name: Upload Artifact
+name: Upload-Artifact
 
 on:
   workflow_call:
@@ -12,9 +12,14 @@ on:
 
 jobs:
   upload-artifact:
+    runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: 🛠️ Checkout Code
         uses: actions/checkout@v4
+
       - name: 📦 Upload Build Artifact - GitHub
         uses: actions/upload-artifact@v2
         with:
