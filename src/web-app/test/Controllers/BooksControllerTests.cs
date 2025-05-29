@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using LibraryManagementWebApp.Controllers;
 using LibraryManagementWebApp.Models;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace LibraryManagementWebApp.Tests.Controllers
 {
@@ -36,7 +37,7 @@ namespace LibraryManagementWebApp.Tests.Controllers
         public void Create_ValidBook_RedirectsToIndex()
         {
             // Arrange
-            var book = new Book { Id = 1, Title = "Test Book", Author = "Author", ISBN = "1234567890", IsAvailable = true };
+            var book = new Book { Id = Guid.NewGuid().ToString(), Title = "Test Book", Author = "Author", ISBN = "1234567890", IsAvailable = true };
 
             // Act
             var result = _controller.Create(book);
@@ -51,12 +52,13 @@ namespace LibraryManagementWebApp.Tests.Controllers
         [TestMethod]
         public void Delete_ValidId_RedirectsToIndex()
         {
+            var id = Guid.NewGuid().ToString();
             // Arrange
-            var book = new Book { Id = 1, Title = "Test Book", Author = "Author", ISBN = "1234567890", IsAvailable = true };
+            var book = new Book { Id =id, Title = "Test Book", Author = "Author", ISBN = "1234567890", IsAvailable = true };
             _controller.Create(book);
 
             // Act
-            var result = _controller.Delete(1);
+            var result = _controller.Delete(id);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
@@ -69,7 +71,7 @@ namespace LibraryManagementWebApp.Tests.Controllers
         public void Delete_InvalidId_RedirectsToIndex()
         {
             // Act
-            var result = _controller.Delete(999);
+            var result = _controller.Delete("invalid-id");
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
