@@ -132,28 +132,28 @@ jobs:
           echo "📦 Checking the downloaded artifacts."
           ls -la ./publish
 
-      - name: ⏬ Download Blob from Azure Storage
-        uses: bacongobbler/azure-blob-storage-download@main
-        with:
-          connection-string:  ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          container_name: "artifacts"
-          blob_name: "web-app-build-artifact.zip"
-          download_path: "."
-
-      # - uses: hyperskill/azblob-download-artifact@v1.0.1
+      # - name: ⏬ Download Blob from Azure Storage
+      #   uses: bacongobbler/azure-blob-storage-download@main
       #   with:
-      #     connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-      #     container-name: "artifacts"
-      #     name: "web-app-build-artifact.zip"
-      #     path: "."
+      #     connection-string:  ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      #     container_name: "artifacts"
+      #     blob_name: "web-app-build-artifact.zip"
+      #     download_path: "."
 
-      - name: 📦 Unzip Artifact
-        run: |
-          echo "📦 Unzipping the downloaded artifact."
-          unzip -o web-app-build-artifact.zip -d ./web-app-publish
+      # # - uses: hyperskill/azblob-download-artifact@v1.0.1
+      # #   with:
+      # #     connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      # #     container-name: "artifacts"
+      # #     name: "web-app-build-artifact.zip"
+      # #     path: "."
 
-      - name: 📦 Check Unzipped Artifact
-        run: |
-          echo "📦 Checking the contents of the unzipped artifact."
-          ls -la ./web-app-publish
+      # - name: 📦 Unzip Artifact
+      #   run: |
+      #     echo "📦 Unzipping the downloaded artifact."
+      #     unzip -o web-app-build-artifact.zip -d ./web-app-publish
+
+      # - name: 📦 Check Unzipped Artifact
+      #   run: |
+      #     echo "📦 Checking the contents of the unzipped artifact."
+      #     ls -la ./web-app-publish
 
