@@ -18,6 +18,8 @@ These workflows are defined in the `.github/workflows/` directory. Through these
 - [x] How to access secrets and environment variables securely.
 - [x] Usage of reusable actions and reusable workflows for better modularity and maintainability.
 
-## Caching 
+## Caching vs Artifacts
 
-Explore the caching features of GitHub Actions to speed up the build process. we will create a cache for the build artifacts and dependencies.
+Caching and artifacts are both used to store files generated during a workflow run, but they serve different purposes:
+- **Caching** is used to store dependencies or build outputs that can be reused in future workflow runs. Caches are typically used to speed up workflow runs by avoiding the need to download or build dependencies again. Caching shares files between workflow runs.
+- **Artifacts** are used to store files that are generated during a workflow run, such as test results or build outputs. Artifacts are typically used to share files between jobs or to download files after the workflow run is complete.
