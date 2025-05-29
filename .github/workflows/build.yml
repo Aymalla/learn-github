@@ -112,7 +112,7 @@ jobs:
           overwrite: 'true'
 
   release:
-    name: Release
+    name: release
     needs: [build]
     uses: ./.github/workflows/release.yml
     with:
