@@ -1,4 +1,4 @@
-name: Upload-Artifact
+name: Upload Build Artifact
 
 on:
   workflow_call:
