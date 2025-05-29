@@ -4,20 +4,20 @@ description: Release workflow for testing GitHub Actions.
   
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      artifact_name:
+        description: "The name of the artifact to upload."
+        required: true
+        type: string
   push:
     branches:
-      - main
-
-concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: false
+      - release
 
 jobs:
-  job1:
+  release:
     runs-on: ubuntu-latest
     steps:
-
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: 🚀 Displaying GitHub Context Variables.
@@ -36,3 +36,34 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: ⏬ Download Build Artifacts - GitHub
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ./publish
+
+      - name: 📦 Check artifact
+        run: |
+          echo "📦 Checking the downloaded artifacts."
+          ls -la ./publish
+
+      - name: ⏬ Download Blob from Azure Storage
+        uses: armanrahman22/azblob-download-action@v0.0.4
+        with:
+          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          container-name: "artifacts"
+          blob-name: "${{ inputs.artifact_name }}.zip"
+          download-path: "."
+
+      - name: 📦 Unzip Artifact - Azure
+        run: |
+          echo "📦 Unzipping the downloaded artifact."
+          unzip -o ${{ inputs.artifact_name }}.zip -d ./web-app-publish
+
+      - name: 📦 Check Unzipped Artifact - Azure
+        run: |
+          echo "📦 Checking the contents of the unzipped artifact."
+          ls -la ./web-app-publish
+
+

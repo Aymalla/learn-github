@@ -20,7 +20,7 @@ Github Actions is a continuous integration and continuous deployment (CI/CD) pla
 - **Outputs**: Values that can be passed from one job to another in a workflow. Outputs can be used to share data between jobs or to pass results to subsequent steps.
 - **reusable workflows**: A workflow that can be called from another workflow. This allows you to create modular workflows that can be reused across multiple repositories or workflows.
 
-### Workflow File Structure
+## Workflow File Structure
 
 A workflow file is a YAML file that defines the workflow. these are the main components of a workflow file:
 
@@ -37,7 +37,7 @@ A workflow file is a YAML file that defines the workflow. these are the main com
 - `if`: A conditional statement that determines whether a step or job should run based on the result of previous steps or jobs.
 - `needs`: Specifies that a job depends on the completion of another job before it can run. This is useful for controlling the order of execution of jobs in a workflow.
 
-### Contexts variables
+## Contexts variables
 
 Contexts are a way to access information about the workflow run, the event that triggered the workflow, and the environment in which the workflow is running. Contexts can be used to access information like the repository name, the branch name, the commit SHA, and more. Contexts are accessed using the `${{ }}` syntax.
 
@@ -50,7 +50,7 @@ Contexts are a way to access information about the workflow run, the event that 
 - `steps`: Contains information about the steps that have been executed in the current job, including their status and outputs.
 - `matrix`: Contains information about the matrix configuration used in the workflow.
 
-### Triggering Workflows
+## Triggering Workflows
 
 Workflows can be triggered by [various events](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow), such as:
 
@@ -69,3 +69,29 @@ Workflows can be triggered by [various events](https://docs.github.com/en/action
 - **project**: Triggered when a project is created, edited, or deleted.
 - **project_card**: Triggered when a project card is created, edited, or deleted.
 - **project_column**: Triggered when a project column is created, edited, or deleted.
+
+### Workflow Scenarios
+
+We will explore various scenarios to understand how workflows behave in different situations:
+
+- Trigger workflows from main branch
+- Trigger workflows from pull requests
+- Trigger workflows from release branch
+- Trigger workflows from manual dispatch
+- Trigger workflows from old commit SHA
+
+## Artifacts
+
+Artifacts are files or sets of files produced by a workflow run. They can be used to store build outputs, test results, or any other files generated during the workflow run. Artifacts can be uploaded and downloaded using the `actions/upload-artifact` and `actions/download-artifact` actions.
+
+## Caching
+
+Caching is a feature that allows you to store dependencies or build outputs to speed up workflow runs. Caches can be used to store files that are expensive to download or build, such as dependencies or build artifacts. Caches can be created and restored using the `actions/cache` action.
+
+### Caching vs Artifacts
+
+Caching and artifacts are both used to store files generated during a workflow run, but they serve different purposes:
+- **Caching** is used to store dependencies or build outputs that can be reused in future workflow runs. Caches are typically used to speed up workflow runs by avoiding the need to download or build dependencies again. Caching shares files between workflow runs.
+- **Artifacts** are used to store files that are generated during a workflow run, such as test results or build outputs. Artifacts are typically used to share files between jobs or to download files after the workflow run is complete.
+
+

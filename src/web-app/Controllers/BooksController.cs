@@ -3,6 +3,7 @@ using LibraryManagementWebApp.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace LibraryManagementWebApp.Controllers
 {
@@ -32,13 +33,14 @@ namespace LibraryManagementWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                book.Id = Guid.NewGuid().ToString(); 
                 books.Add(book);
                 return RedirectToAction(nameof(Index));
             }
             return View(book);
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(String id)
         {
             var book = books.FirstOrDefault(b => b.Id == id);
             if (book == null)
@@ -71,7 +73,7 @@ namespace LibraryManagementWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(String id)
         {
             _logger.LogInformation("Delete action called with id: {Id}", id);
             var book = books.FirstOrDefault(b => b.Id == id);

@@ -43,5 +43,22 @@ run: ## 🚀 Start the application
 	@echo "🚀 Starting the application..."
 	@uv run src/main.py
 
+app-start: ## 🚀 Start the application 
+	@echo "🚀 Starting the application"
+	@cd src/web-app && dotnet watch run
 
-	
+app-clean: ## 🧹 Clean the application
+	@echo "🧹 Cleaning the application"
+	@cd src/web-app && dotnet clean
+
+app-build: app-clean ## 🏗️ Build the application
+	@echo "🏗️ Building the application"
+	@cd src/web-app && dotnet build
+
+app-publish: app-clean ## 📦 Publish the application
+	@echo "📦 Publishing the application"
+	@cd src/web-app && dotnet publish
+
+app-test: app-clean ## 🧪 Run the application tests
+	@echo "🧪 Running the application tests"
+	@cd src/web-app && dotnet test
