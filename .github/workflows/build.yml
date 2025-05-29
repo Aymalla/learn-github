@@ -29,7 +29,7 @@ env:
   artifact_name: 'web-app-build-artifact'
 
 jobs:
-  prerequisites:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: "Check out repository code (Workflow version: Main)"
