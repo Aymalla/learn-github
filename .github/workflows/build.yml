@@ -112,9 +112,9 @@ jobs:
           overwrite: 'true'
 
   release:
-    name: Release Job
+    name: Release
     needs: [build]
     uses: ./.github/workflows/release.yml
     with:
-      artifact_name: 'web-app-build-artifact'
+      artifact_name: ${{ env.artifact_name }}
     secrets: inherit
