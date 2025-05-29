@@ -13,6 +13,8 @@ on:
 jobs:
   upload-artifact:
     steps:
+      - name: 🛠️ Checkout Code
+        uses: actions/checkout@v4
       - name: 📦 Upload Build Artifact - GitHub
         uses: actions/upload-artifact@v2
         with:
