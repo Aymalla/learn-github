@@ -100,13 +100,13 @@ jobs:
         run: |
           # name of the zip file can be replaced with hash of the commit to support versioning
           cd ${{ github.workspace }}/src/web-app/publish
-          zip -r ./${{ env.artifact_name }}.zip
+          zip -r ../${{ env.artifact_name }}.zip
 
       - name: 📦 Upload Build Artifact - Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@main
         with:
           connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          source_dir: '.'
+          source_dir: '${{ github.workspace }}/src/web-app'
           container_name: artifacts
           extra_args: '--pattern *.zip'
           overwrite: 'true'
