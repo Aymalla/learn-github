@@ -96,7 +96,8 @@ jobs:
 
       - name: 🗜️ Zip Folder
         run: |
-          rm -rf web-app-build-artifact.zip
+          # name of the zip file can be replaced with hash of the commit to support versioning
+          rm -rf web-app-build-artifact.zip 
           zip -r web-app-build-artifact.zip ${{ github.workspace }}/src/web-app/publish
 
       - name: 📦 Upload to Azure Blob Storage
@@ -106,7 +107,6 @@ jobs:
           source_dir: '.'
           container_name: artifacts
           extra_args: '--pattern *.zip'
-          # WARNING: this will overwrite existing blobs in your blob storage
           overwrite: 'true'
 
 
