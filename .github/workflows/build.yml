@@ -32,7 +32,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - name: "Check out repository code (Workflow version: Main)"
+      - name: "Check out repository code (Workflow version: Feature branch)"
         uses: actions/checkout@v4
       - name: "🚀 Displaying GitHub Context Variables."
         id: get_context
