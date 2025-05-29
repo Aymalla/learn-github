@@ -11,9 +11,6 @@ on:
         required: true
         type: string
         default: "web-app-build-artifact"
-  push:
-    branches:
-      - release
 
 jobs:
   release:
