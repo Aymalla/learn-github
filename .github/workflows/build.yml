@@ -117,5 +117,5 @@ jobs:
     needs: [build]
     uses: ./.github/workflows/release.yml
     with:
-      artifact_name: "${{ env.artifact_name }}"
+      artifact_name: '${{ env.artifact_name }}'
     secrets: inherit
