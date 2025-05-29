@@ -1,25 +1,25 @@
 # Learn github
 
-This repository will be used as a playground to explore GitHub platform features to build CI/CD pipelines.
-
+This repository is designed as a learning environment to explore and experiment with the features of the GitHub platform, especially GitHub Actions, to build Continuous Integration and Continuous Deployment (CI/CD) pipelines.
 
 
 ## Workflows
 
-Explore the workflow features of GitHub Actions to automate the build and release process. we will create two workflows:
+We'll explore how GitHub Actions can automate the build and release processes by creating and experimenting with two workflows:
 
-- [x] Build Workflow: Triggered on pull request to the main branch and on push to the main branch.
-- [x] Release Workflow: Triggered on push to the release branch.
+- ✅ Build Workflow: Triggered on: Pull requests to the main branch, Pushes to the main branch, or Manual dispatch.
+- 🚀 Release Workflow: Triggered on: Pushes to the release branch.
 
-Explore how the workflows is managed in the `.github/workflows` directory and triggered to explore how the workflows behave in different scenarios:
+These workflows are defined in the `.github/workflows/` directory. Through these examples, we’ll observe how workflows behave in different scenarios:
 
 - [x] Which versions of the workflows are triggered on different events.
-- [x] Triggering events for the workflows.
+- [x] Types of events that trigger workflows
 - [x] Conditional execution of the workflows based on the event type.
-- [x] Access secrets and environment variables in the workflows.
-- [x] Use of reusable action.
-- [x] Use of reusable workflows.
+- [x] How to access secrets and environment variables securely.
+- [x] Usage of reusable actions and reusable workflows for better modularity and maintainability.
 
-## Caching 
+## Caching vs Artifacts
 
-Explore the caching features of GitHub Actions to speed up the build process. we will create a cache for the build artifacts and dependencies.
+Caching and artifacts are both used to store files generated during a workflow run, but they serve different purposes:
+- **Caching** is used to store dependencies or build outputs that can be reused in future workflow runs. Caches are typically used to speed up workflow runs by avoiding the need to download or build dependencies again. Caching shares files between workflow runs.
+- **Artifacts** are used to store files that are generated during a workflow run, such as test results or build outputs. Artifacts are typically used to share files between jobs or to download files after the workflow run is complete.
