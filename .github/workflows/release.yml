@@ -18,6 +18,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: "Check out repository code 
+        uses: actions/checkout@v4
       - name: 🚀 Displaying GitHub Context Variables.
         id: get_context
         uses: ./.github/actions/github-context
