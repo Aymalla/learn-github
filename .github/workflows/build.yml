@@ -92,8 +92,6 @@ jobs:
         with:
           artifact_name: web-app-build-artifacts
           path: ${{ github.workspace }}/src/web-app/publish
-        secrets: 
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
 
 
 
