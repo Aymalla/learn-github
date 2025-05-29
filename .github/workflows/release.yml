@@ -9,6 +9,10 @@ on:
       artifact_name:
         description: "The name of the artifact to upload."
         required: true
+  workflow_dispatch:
+    artifact_name:
+        description: "The name of the artifact to upload."
+        required: true
   push:
     branches:
       - release
@@ -19,6 +23,7 @@ concurrency:
 
 jobs:
   job1:
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
