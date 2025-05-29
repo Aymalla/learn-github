@@ -87,7 +87,7 @@ jobs:
         run: dotnet publish --no-build --configuration Release --output ./publish
 
       - name: 📦 Upload build Artifacts
-        uses: ./.github/workflows/upload-artifact.yml
+        uses: ./.github/workflows/upload-build-artifact.yml
         with:
           artifact_name: web-app-build-artifacts
           path: '${{ github.workspace }}/src/web-app/publish'

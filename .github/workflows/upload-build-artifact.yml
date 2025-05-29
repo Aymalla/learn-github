@@ -11,7 +11,7 @@ on:
         required: true
 
 jobs:
-  upload-artifact:
+  upload-build-artifact:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
