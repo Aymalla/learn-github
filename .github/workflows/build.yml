@@ -96,7 +96,6 @@ jobs:
 
       - name: 🗜️ Zip Folder
         run: |
-          cd ../ # I added this
           rm -rf web-app-build-artifact.zip
           zip -r web-app-build-artifact.zip ${{ github.workspace }}/src/web-app/publish
 
