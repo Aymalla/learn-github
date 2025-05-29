@@ -87,27 +87,13 @@ jobs:
         working-directory: ${{ github.workspace }}/src/web-app
         run: dotnet publish --no-build --configuration Release --output ./publish
 
-      - name: ⬆️ Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+      - name: 📦 Upload build Artifacts
+        uses: ./.github/workflows/upload-artifact.yml
+        secrets: inherit
         with:
-          name: build-artifacts
-          path: ./src/web-app/publish
-          retention-days: 5
+          artifact_name: web-app-build-artifacts
+          path: ${{ github.workspace }}/src/web-app/publish
 
-      - name: 🗜️ Zip Folder
-        run: |
-          # name of the zip file can be replaced with hash of the commit to support versioning
-          rm -rf web-app-build-artifact.zip 
-          zip -r web-app-build-artifact.zip ${{ github.workspace }}/src/web-app/publish
-
-      - name: 📦 Upload to Azure Blob Storage
-        uses: bacongobbler/azure-blob-storage-upload@main
-        with:
-          connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          source_dir: '.'
-          container_name: artifacts
-          extra_args: '--pattern *.zip'
-          overwrite: 'true'
 
 
   release:
