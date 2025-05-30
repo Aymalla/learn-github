@@ -86,11 +86,11 @@ These workflows are defined in the `.github/workflows/` directory. Through these
 - [X] Usage of reusable actions and reusable workflows for better modularity and maintainability.
 
 We will explore various scenarios to understand how workflows behave in different situations:
-- Trigger workflows from main branch
-- Trigger workflows from pull requests
-- Trigger workflows from release branch
-- Trigger workflows from manual dispatch
-- Trigger workflows from old commit SHA
+- [X] Trigger workflows from main branch
+- [X] Trigger workflows from pull requests
+- [X] Trigger workflows from release branch
+- [X] Trigger workflows from manual dispatch
+- [X] Trigger workflows from old commit SHA
 
 ## Caching vs Artifacts
 
