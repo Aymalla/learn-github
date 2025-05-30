@@ -70,28 +70,35 @@ Workflows can be triggered by [various events](https://docs.github.com/en/action
 - **project_card**: Triggered when a project card is created, edited, or deleted.
 - **project_column**: Triggered when a project column is created, edited, or deleted.
 
-### Workflow Scenarios
+## Workflow Scenarios
+
+We'll explore how GitHub Actions can automate the build and release processes by creating and experimenting with two workflows:
+
+- ✅ Build Workflow: Triggered on: Pull requests to the main branch, Pushes to the main branch, or Manual dispatch.
+- 🚀 Release Workflow: Triggered on: Pushes to the release branch.
+
+These workflows are defined in the `.github/workflows/` directory. Through these examples, we’ll observe how workflows behave in different scenarios:
+
+- [X] Which versions of the workflows are triggered on different events.
+- [X] Types of events that trigger workflows
+- [X] Conditional execution of the workflows based on the event type.
+- [X] How to access secrets and environment variables securely.
+- [X] Usage of reusable actions and reusable workflows for better modularity and maintainability.
 
 We will explore various scenarios to understand how workflows behave in different situations:
+- [X] Trigger workflows from main branch
+- [X] Trigger workflows from pull requests
+- [X] Trigger workflows from release branch
+- [X] Trigger workflows from manual dispatch
+- [X] Trigger workflows from old commit SHA
 
-- Trigger workflows from main branch
-- Trigger workflows from pull requests
-- Trigger workflows from release branch
-- Trigger workflows from manual dispatch
-- Trigger workflows from old commit SHA
+## Caching vs Artifacts
 
-## Artifacts
+- Artifacts: Artifacts are files or sets of files produced by a workflow run. They can be used to store build outputs, test results, or any other files generated during the workflow run. Artifacts can be uploaded and downloaded using the `actions/upload-artifact` and `actions/download-artifact` actions.
 
-Artifacts are files or sets of files produced by a workflow run. They can be used to store build outputs, test results, or any other files generated during the workflow run. Artifacts can be uploaded and downloaded using the `actions/upload-artifact` and `actions/download-artifact` actions.
-
-## Caching
-
-Caching is a feature that allows you to store dependencies or build outputs to speed up workflow runs. Caches can be used to store files that are expensive to download or build, such as dependencies or build artifacts. Caches can be created and restored using the `actions/cache` action.
-
-### Caching vs Artifacts
-
-Caching and artifacts are both used to store files generated during a workflow run, but they serve different purposes:
-- **Caching** is used to store dependencies or build outputs that can be reused in future workflow runs. Caches are typically used to speed up workflow runs by avoiding the need to download or build dependencies again. Caching shares files between workflow runs.
-- **Artifacts** are used to store files that are generated during a workflow run, such as test results or build outputs. Artifacts are typically used to share files between jobs or to download files after the workflow run is complete.
+- Caching: Caching is a feature that allows you to store dependencies or build outputs to speed up workflow runs. Caches can be used to store files that are expensive to download or build, such as dependencies or build artifacts. Caches can be created and restored using the `actions/cache` action.
+- **Caching vs Artifacts**: Caching and artifacts are both used to store files generated during a workflow run, but they serve different purposes
+  - **Caching** is used to store dependencies or build outputs that can be reused in future workflow runs. Caches are typically used to speed up workflow runs by avoiding the need to download or build dependencies again. Caching shares files between workflow runs.
+  - **Artifacts** are used to store files that are generated during a workflow run, such as test results or build outputs. Artifacts are typically used to share files between jobs or to download files after the workflow run is complete.
 
 
