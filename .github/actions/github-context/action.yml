@@ -36,10 +36,6 @@ runs:
         echo "🏃 runner ID: ${{ github.run_id }}"
         echo "🏃‍♂️ Run Number: ${{ github.run_number }}"
         echo "🏃‍♂️ Run Attempt: ${{ github.run_attempt }}"
-        echo "---------------------------------------------"
-        echo "🔑 PR title: ${{ github.event.pull_request.title }}
-        echo "🔑 PR number: ${{ github.event.pull_request.number }}"
-        echo "🔑 PR state: ${{ github.event.pull_request.state }}"
         echo "--------------------------------------------"
         echo "🔑 Repository ID: ${{ github.repository_id }}"
         echo "🔑 Repository Name: ${{ github.event.repository.name  }}"

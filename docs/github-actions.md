@@ -2,6 +2,8 @@
 
 Github Actions is a continuous integration and continuous deployment (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. This document provides an overview of how to set up and use GitHub Actions for your project.
 
+we’re going to walk through how GitHub workflow definitions—specifically GitHub Actions—are handled across branches, and what that means for collaboration, CI/CD stability, and maintaining history. Our goal is to align on how these workflows behave and discuss any specific considerations, especially in collaboration with the Nokia team.
+
 ## Key Concepts
 
 - **Workflow**: A configurable automated process that runs one or more jobs. Workflows are defined in YAML files in the .github/workflows directory in a repository and can be triggered by events, manually, or on a schedule. workflows can be used to build, test, and deploy code, as well as automate other tasks like sending notifications or updating documentation. contains a series of jobs that run in a specific order or in parallel, depending on their dependencies.
