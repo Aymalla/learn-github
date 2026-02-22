@@ -35,6 +35,9 @@
         },
         {
             "file": ".github/instructions/security.instructions.md"
+        },
+        {
+            "file": ".github/instructions/linting.instructions.md"
         }
     ],
     "github.copilot.chat.commitMessageGeneration.instructions": [

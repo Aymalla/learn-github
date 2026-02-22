@@ -1,5 +1,5 @@
 ---
-applyTo: ""
+applyTo: "**/*.{md,yml,yaml}"
 ---
 
 # Git Workflow & Best Practices Instructions
