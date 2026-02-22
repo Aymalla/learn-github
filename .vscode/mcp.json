@@ -1,0 +1,45 @@
+{
+  "mcp": {
+    "servers": {
+      "github": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+        }
+      },
+      "filesystem": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
+      },
+      "memory": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-memory"]
+      },
+      "fetch": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-fetch"]
+      },
+      "sequential-thinking": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
+      },
+      "playwright": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@anthropic/mcp-server-playwright"]
+      },
+      "git": {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "@anthropic/mcp-server-git", "--repository", "${workspaceFolder}"]
+      }
+    },
+    "inputs": [
+      {
+        "id": "github_token",
+        "type": "promptString",
+        "description": "GitHub Personal Access Token for MCP GitHub server",
+        "password": true
+      }
+    ]
+  }
+}

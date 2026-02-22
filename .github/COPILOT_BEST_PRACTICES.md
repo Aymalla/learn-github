@@ -5,12 +5,15 @@ This document outlines best practices for using GitHub Copilot effectively withi
 ## Quick Start with Copilot
 
 ### 1. Familiarize Yourself with Project Context
+
 Before starting, ensure Copilot has the right context:
+
 - Open [.github/copilot-instructions.md](.github/copilot-instructions.md) to review project conventions
 - Keep relevant files open in your editor tabs
 - Review existing code patterns in the codebase
 
 ### 2. Enable Copilot Features
+
 - **Copilot Suggestions**: Auto-complete as you type
 - **Copilot Chat**: Ask questions about the code
 - **Copilot Workspace**: Get project-wide assistance
@@ -20,12 +23,14 @@ Before starting, ensure Copilot has the right context:
 ### Writing Good Comments for Copilot
 
 ✅ **Good:**
+
 ```csharp
 // Create a method that validates ISBN-13 format with checksum verification
 // Returns true if valid, false otherwise
 ```
 
 ❌ **Bad:**
+
 ```csharp
 // Validate ISBN
 ```
@@ -78,6 +83,7 @@ Create a controller action that:
 ### 4. Refactoring Code
 
 Select code and use Copilot Chat:
+
 ```
 /fix improve this method's performance and readability
 ```
@@ -86,13 +92,13 @@ Select code and use Copilot Chat:
 
 Use these in Copilot Chat for specific tasks:
 
-| Command | Purpose | Example |
-|---------|---------|---------|
-| `/explain` | Understand code | `/explain this controller action` |
-| `/fix` | Fix issues | `/fix this validation logic` |
-| `/tests` | Generate tests | `/tests for UserService` |
-| `/doc` | Generate docs | `/doc this public method` |
-| `/optimize` | Improve performance | `/optimize this database query` |
+| Command     | Purpose             | Example                           |
+| ----------- | ------------------- | --------------------------------- |
+| `/explain`  | Understand code     | `/explain this controller action` |
+| `/fix`      | Fix issues          | `/fix this validation logic`      |
+| `/tests`    | Generate tests      | `/tests for UserService`          |
+| `/doc`      | Generate docs       | `/doc this public method`         |
+| `/optimize` | Improve performance | `/optimize this database query`   |
 
 ## Project-Specific Patterns
 
@@ -141,7 +147,7 @@ public class Book
     /// Gets or sets the unique identifier.
     /// </summary>
     public int Id { get; set; }
-    
+
     /// <summary>
     /// Gets or sets the book title.
     /// </summary>
@@ -157,12 +163,15 @@ public class Book
 ### For PR Authors
 
 Use Copilot to:
+
 1. **Self-review code**: Ask Copilot to review your changes
+
    ```
    @copilot review this PR for potential issues
    ```
 
-2. **Generate descriptions**: 
+2. **Generate descriptions**:
+
    ```
    @copilot summarize these changes for the PR description
    ```
@@ -175,12 +184,15 @@ Use Copilot to:
 ### For PR Reviewers
 
 Use Copilot to:
+
 1. **Understand changes**:
+
    ```
    @copilot explain what this code does
    ```
 
 2. **Identify issues**:
+
    ```
    @copilot find potential bugs in this implementation
    ```
@@ -195,6 +207,7 @@ Use Copilot to:
 ### 1. Multi-file Edits
 
 When making changes across multiple files:
+
 ```
 Update the Book model to include Genre property:
 1. Add Genre property to Models/Book.cs
@@ -206,6 +219,7 @@ Update the Book model to include Genre property:
 ### 2. Pattern Learning
 
 Copilot learns from your codebase. To improve suggestions:
+
 - Keep consistent naming conventions
 - Use similar patterns across files
 - Add comments explaining complex logic
@@ -214,6 +228,7 @@ Copilot learns from your codebase. To improve suggestions:
 ### 3. Context Management
 
 Maximize Copilot's effectiveness:
+
 - **Open related files** in tabs
 - **Use workspace mode** for cross-file understanding
 - **Reference existing code** in your prompts
@@ -256,7 +271,8 @@ Maximize Copilot's effectiveness:
 
 ## Feedback and Improvements
 
-Found a better way to use Copilot in this project? 
+Found a better way to use Copilot in this project?
+
 - Open a PR to update this document
 - Share in team discussions
 - Add examples to `.github/copilot-instructions.md`
