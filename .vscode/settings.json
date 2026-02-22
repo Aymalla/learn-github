@@ -1,0 +1,66 @@
+{
+    // Editor settings
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": null,
+    // C# settings
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp",
+        "editor.formatOnSave": true
+    },
+    // File associations
+    "files.associations": {
+        "*.cshtml": "razor"
+    },
+    // GitHub Copilot settings
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": ".github/instructions/coding-standards.instructions.md"
+        },
+        {
+            "file": ".github/instructions/aspnetcore.instructions.md"
+        },
+        {
+            "file": ".github/instructions/security.instructions.md"
+        }
+    ],
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "file": ".github/instructions/testing.instructions.md"
+        }
+    ],
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "file": ".github/instructions/coding-standards.instructions.md"
+        },
+        {
+            "file": ".github/instructions/security.instructions.md"
+        },
+        {
+            "file": ".github/instructions/linting.instructions.md"
+        }
+    ],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".github/instructions/git-workflow.instructions.md"
+        }
+    ],
+    // Exclude unnecessary files from search
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/.venv": true
+    },
+    "search.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/node_modules": true,
+        "**/.venv": true
+    },
+    // Linting
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "dotnet.defaultSolution": "learn-github.sln"
+}
