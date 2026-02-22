@@ -1,3 +1,7 @@
+---
+applyTo: "**/*.{cs,cshtml,csproj}"
+---
+
 # ASP.NET Core MVC Best Practices Instructions
 
 Follow these patterns and practices for all ASP.NET Core MVC development.
@@ -5,6 +9,7 @@ Follow these patterns and practices for all ASP.NET Core MVC development.
 ## Project Architecture
 
 ### Layer Separation
+
 ```
 Controllers  →  Services  →  Repositories  →  Data
      ↓              ↓              ↓
@@ -36,6 +41,7 @@ public class BooksController : Controller
 ```
 
 **Rules:**
+
 - Controllers should be thin — delegate to services
 - Use constructor injection for dependencies
 - Always validate `ModelState.IsValid` before processing POST/PUT
@@ -70,6 +76,7 @@ public class BookListViewModel
 ```
 
 **Rules:**
+
 - Use Data Annotations for validation
 - Use `Display` attribute for label text
 - Initialize properties with defaults (avoid null)
@@ -96,6 +103,7 @@ public class BookListViewModel
 ```
 
 **Rules:**
+
 - Always declare `@model` at the top of views
 - Use Tag Helpers (`asp-for`, `asp-action`, `asp-controller`)
 - Use `asp-validation-for` for field-level validation messages
@@ -115,13 +123,14 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 ```
 
 **Lifetime Rules:**
-| Lifetime    | Use When                                    |
+| Lifetime | Use When |
 |-------------|---------------------------------------------|
-| `Singleton` | Stateless services, caches, configuration   |
-| `Scoped`    | Per-request services, DB contexts, repos    |
+| `Singleton` | Stateless services, caches, configuration |
+| `Scoped` | Per-request services, DB contexts, repos |
 | `Transient` | Lightweight, stateless, short-lived services|
 
 **Rules:**
+
 - Program to interfaces, not implementations
 - Use constructor injection — never `HttpContext.RequestServices`
 - Register all dependencies in `Program.cs`
@@ -130,6 +139,7 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 ## Middleware Pipeline
 
 Order matters in `Program.cs`:
+
 ```csharp
 app.UseExceptionHandler("/Home/Error");
 app.UseHsts();
@@ -151,6 +161,7 @@ _logger.LogError(ex, "Failed to create book: {Title}", book.Title);
 ```
 
 **Rules:**
+
 - Use `ILogger<T>` — never `Console.WriteLine()`
 - Use structured logging with named placeholders `{Name}`
 - Use appropriate log levels (Trace, Debug, Information, Warning, Error, Critical)

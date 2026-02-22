@@ -1,3 +1,7 @@
+---
+applyTo: "**/*Tests.cs"
+---
+
 # Testing Standards Instructions
 
 All code changes MUST include appropriate tests. Follow these standards strictly.
@@ -12,6 +16,7 @@ All code changes MUST include appropriate tests. Follow these standards strictly
 ## Test Organization
 
 ### File Structure
+
 ```
 src/web-app/test/
 ├── Controllers/          # Controller unit tests
@@ -22,10 +27,12 @@ src/web-app/test/
 ```
 
 ### Test File Naming
+
 - Test file: `{ClassName}Tests.cs`
 - Example: `BooksControllerTests.cs`, `BookTests.cs`
 
 ### Test Class Naming
+
 - `{ClassName}Tests` for flat tests
 - `{ClassName}_{MethodName}Tests` for nested/grouped tests
 
@@ -85,6 +92,7 @@ public void Create_WithValidBook_AddsBookToList()
 ## What to Test
 
 ### Controllers
+
 - Each action method returns the correct `IActionResult` type
 - Model validation errors return the view with the model
 - Valid input redirects correctly
@@ -92,12 +100,14 @@ public void Create_WithValidBook_AddsBookToList()
 - Proper logging calls are made
 
 ### Models
+
 - Required fields are validated
 - String length constraints are enforced
 - Custom validation logic works
 - Default values are correct
 
 ### Services (when added)
+
 - Business logic produces correct results
 - Error cases are handled
 - Dependencies are properly called

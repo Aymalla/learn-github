@@ -1,3 +1,7 @@
+---
+applyTo: "**/*.{cs,cshtml}"
+---
+
 # Security Best Practices Instructions
 
 ALL code MUST follow these security standards. Security is non-negotiable.
@@ -54,12 +58,14 @@ ALL code MUST follow these security standards. Security is non-negotiable.
 ## HTTP Security Headers
 
 Configure these in `Program.cs`:
+
 ```csharp
 app.UseHsts();
 app.UseHttpsRedirection();
 ```
 
 Recommended headers:
+
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `X-XSS-Protection: 1; mode=block`

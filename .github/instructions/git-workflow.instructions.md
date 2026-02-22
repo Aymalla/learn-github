@@ -1,3 +1,7 @@
+---
+applyTo: ""
+---
+
 # Git Workflow & Best Practices Instructions
 
 Follow these Git workflow standards for all contributions.
@@ -5,6 +9,7 @@ Follow these Git workflow standards for all contributions.
 ## Branch Strategy
 
 ### Branch Naming Convention
+
 ```
 <type>/<short-description>
 
@@ -18,17 +23,19 @@ Examples:
 ```
 
 ### Branch Types
-| Prefix     | Purpose                      |
-|------------|------------------------------|
-| `feature/` | New features                 |
-| `fix/`     | Bug fixes                    |
-| `docs/`    | Documentation changes        |
-| `refactor/`| Code refactoring             |
-| `test/`    | Adding or updating tests     |
-| `chore/`   | Maintenance, dependencies    |
-| `hotfix/`  | Urgent production fixes      |
+
+| Prefix      | Purpose                   |
+| ----------- | ------------------------- |
+| `feature/`  | New features              |
+| `fix/`      | Bug fixes                 |
+| `docs/`     | Documentation changes     |
+| `refactor/` | Code refactoring          |
+| `test/`     | Adding or updating tests  |
+| `chore/`    | Maintenance, dependencies |
+| `hotfix/`   | Urgent production fixes   |
 
 ### Protected Branches
+
 - `main` — production-ready code, requires PR review
 - `develop` — integration branch (if using Gitflow)
 
@@ -45,21 +52,23 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 ```
 
 ### Commit Types
-| Type       | Description                                |
-|------------|--------------------------------------------|
-| `feat`     | New feature                                |
-| `fix`      | Bug fix                                    |
-| `docs`     | Documentation only                         |
-| `style`    | Formatting, no code change                 |
-| `refactor` | Code change, no new feature or fix         |
-| `perf`     | Performance improvement                    |
-| `test`     | Adding/updating tests                      |
-| `build`    | Build system or external dependency changes|
-| `ci`       | CI/CD configuration changes                |
-| `chore`    | Other changes (not src/test)               |
-| `revert`   | Reverting a previous commit                |
+
+| Type       | Description                                 |
+| ---------- | ------------------------------------------- |
+| `feat`     | New feature                                 |
+| `fix`      | Bug fix                                     |
+| `docs`     | Documentation only                          |
+| `style`    | Formatting, no code change                  |
+| `refactor` | Code change, no new feature or fix          |
+| `perf`     | Performance improvement                     |
+| `test`     | Adding/updating tests                       |
+| `build`    | Build system or external dependency changes |
+| `ci`       | CI/CD configuration changes                 |
+| `chore`    | Other changes (not src/test)                |
+| `revert`   | Reverting a previous commit                 |
 
 ### Commit Rules
+
 - Use imperative mood: "add feature" not "added feature"
 - First line max 72 characters
 - Reference issues: `fix: resolve null pointer (#42)`
@@ -96,6 +105,7 @@ changed files
 8. Merge after approval (prefer squash merge for clean history)
 
 ### PR Requirements
+
 - [ ] Descriptive title following commit conventions
 - [ ] PR template filled out completely
 - [ ] All CI checks passing

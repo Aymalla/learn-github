@@ -1,3 +1,7 @@
+---
+applyTo: "**/*.{cs,cshtml,js,css}"
+---
+
 # Coding Standards Instructions
 
 These are the mandatory coding standards for this repository. All code contributions MUST follow these rules.
@@ -6,24 +10,25 @@ These are the mandatory coding standards for this repository. All code contribut
 
 ### Naming Conventions
 
-| Element            | Convention     | Example                        |
-|--------------------|----------------|--------------------------------|
-| Namespace          | PascalCase     | `LibraryManagementWebApp`      |
-| Class              | PascalCase     | `BooksController`              |
-| Interface          | I + PascalCase | `IBookService`                 |
-| Method             | PascalCase     | `GetBookById()`                |
-| Property           | PascalCase     | `Title`, `IsAvailable`         |
-| Public field       | PascalCase     | `MaxRetries`                   |
-| Private field      | _camelCase     | `_logger`, `_bookService`      |
-| Parameter          | camelCase      | `bookId`, `searchTerm`         |
-| Local variable     | camelCase       | `existingBook`, `isValid`      |
-| Constant           | PascalCase     | `MaxPageSize`, `DefaultTimeout`|
-| Enum               | PascalCase     | `BookStatus.Available`         |
-| Generic type param | T + PascalCase | `TEntity`, `TResult`           |
+| Element            | Convention     | Example                         |
+| ------------------ | -------------- | ------------------------------- |
+| Namespace          | PascalCase     | `LibraryManagementWebApp`       |
+| Class              | PascalCase     | `BooksController`               |
+| Interface          | I + PascalCase | `IBookService`                  |
+| Method             | PascalCase     | `GetBookById()`                 |
+| Property           | PascalCase     | `Title`, `IsAvailable`          |
+| Public field       | PascalCase     | `MaxRetries`                    |
+| Private field      | \_camelCase    | `_logger`, `_bookService`       |
+| Parameter          | camelCase      | `bookId`, `searchTerm`          |
+| Local variable     | camelCase      | `existingBook`, `isValid`       |
+| Constant           | PascalCase     | `MaxPageSize`, `DefaultTimeout` |
+| Enum               | PascalCase     | `BookStatus.Available`          |
+| Generic type param | T + PascalCase | `TEntity`, `TResult`            |
 
 ### File Organization
 
 Every C# file MUST follow this order:
+
 1. `using` directives (System first, then third-party, then project)
 2. Namespace declaration (file-scoped preferred: `namespace X;`)
 3. Class/interface declaration

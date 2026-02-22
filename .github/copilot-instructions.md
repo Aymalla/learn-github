@@ -111,15 +111,15 @@ public async Task<IActionResult> ActionName(Model model)
 This project uses multiple instruction files in `.github/instructions/` to enforce standards.
 Copilot MUST follow these when generating or reviewing code:
 
-| File                                | Purpose                                       |
-| ----------------------------------- | --------------------------------------------- |
-| `coding-standards.instructions.md`  | C#, JS, CSS naming and style rules            |
-| `testing.instructions.md`           | Test structure, naming, coverage requirements |
-| `security.instructions.md`          | Security best practices and OWASP compliance  |
-| `aspnetcore.instructions.md`        | ASP.NET Core MVC patterns and architecture    |
-| `git-workflow.instructions.md`      | Branch naming, commit conventions, PR process |
-| `linting.instructions.md`           | Analyzer rules and suppression guidelines     |
-| `mcp-configuration.instructions.md` | MCP server setup and usage                    |
+| File                                | Purpose                                       | Applies To                                      |
+| ----------------------------------- | --------------------------------------------- | ----------------------------------------------- |
+| `coding-standards.instructions.md`  | C#, JS, CSS naming and style rules            | `**/*.{cs,cshtml,js,css}`                       |
+| `testing.instructions.md`           | Test structure, naming, coverage requirements | `**/*Tests.cs`                                  |
+| `security.instructions.md`          | Security best practices and OWASP compliance  | `**/*.{cs,cshtml}`                              |
+| `aspnetcore.instructions.md`        | ASP.NET Core MVC patterns and architecture    | `**/*.{cs,cshtml,csproj}`                       |
+| `git-workflow.instructions.md`      | Branch naming, commit conventions, PR process | All files                                       |
+| `linting.instructions.md`           | Analyzer rules and suppression guidelines     | `**/*.{cs,csproj,editorconfig,props}`           |
+| `mcp-configuration.instructions.md` | MCP server setup and usage                    | `**/{mcp.json,devcontainer.json,settings.json}` |
 
 ## Resources
 
