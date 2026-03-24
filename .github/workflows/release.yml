@@ -49,7 +49,7 @@ jobs:
           ls -la ./publish
 
       - name: ⏬ Download Blob from Azure Storage
-        uses: armanrahman22/azblob-download-action@v0.0.4
+        uses: armanrahman22/azblob-download-action@2d41a63155a1d62cfc0dd9693177628568fa6cdb # v0.0.4
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           container-name: "artifacts"
