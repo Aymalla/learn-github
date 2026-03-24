@@ -63,7 +63,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: 🫙Cache NuGet
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/web-app/*.csproj') }}
@@ -104,7 +104,7 @@ jobs:
           zip -r ../${{ env.artifact_name }}.zip .
 
       - name: 📦 Upload Build Artifact - Azure Storage
-        uses: bacongobbler/azure-blob-storage-upload@main
+        uses: bacongobbler/azure-blob-storage-upload@a7f1705d5d3796a387d18cae8e6864ae3d021bda # v3.0.0
         with:
           connection_string : ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           source_dir: '${{ github.workspace }}/src/web-app'
